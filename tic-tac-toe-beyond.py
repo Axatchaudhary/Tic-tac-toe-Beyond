@@ -26,16 +26,16 @@ class TicTacToe:
         def draw_row(board, row_num, n):
             bottom_line = '_' if row_num < n-1 else ' '
 
-            # draw upper side of the row
+            # draw upper area of the row
             row = '   '+padding.format('|',fill=' ')*(n-1)+'\n'
 
-            # draw middle side of the row
+            # draw middle area of the row
             row += str(row_num+1)+'  ' # display row number on left side
             for i in range(n-1):
                 row += middle.format(board[row_num*n + i], '|')
             row += middle.format(board[row_num*n + n - 1], '')+'\n'
 
-            # draw lower side of the row
+            # draw lower area of the row
             row += '   '+padding.format('|',fill=bottom_line)*(n-1)
             row += padding.format(' ',fill=bottom_line)+'\n'
 
