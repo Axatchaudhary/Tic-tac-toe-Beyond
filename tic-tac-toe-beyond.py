@@ -40,7 +40,7 @@ class TicTacToe:
 
             # display column numbers on bottom of the board
             if row_num == n - 1:
-                row += '\n   '+' '.join(map(lambda x: '{:^5}'.format(x), range(1 ,n+1)))
+                row += '\n   '+' '.join(map(lambda x: '{:^5}'.format(x), range(1, n+1)))
 
             return row
 
@@ -51,6 +51,22 @@ class TicTacToe:
 
     def board_full(self):
         return not any([space == ' ' for space in self.board])
+
+    def define_winning_positions(self):
+
+        win_rows = []
+        win_columns = []
+        result = []
+        for row in range(self.n):
+            win_rows.append(tuple(row * (self.n) + i for i in range(self.n)))
+            win_columns.append(tuple(i * (self.n) + row for i in range(self.n)))
+
+        win_diags = [tuple(i * (self.n) + i for i in range(self.n)), tuple(i * (self.n) - i for i in range(1, self.n+1))]
+        result.extend(win_rows)
+        result.extend(win_columns)
+        result.extend(win_diags)
+        return result
+
 
     def player_wins(self, char):
         for a, b, c in [(0, 1, 2), (3, 4, 5), (6, 7, 8),
@@ -97,3 +113,10 @@ class TicTacToe:
 
             other_player.reward(0, self.board)
             self.playerX_turn = not self.playerX_turn
+
+
+if __name__ == '__main__':
+
+    t = TicTacToe(3, None, None)
+
+    print t.define_winning_positions()
