@@ -1,6 +1,5 @@
 
 
-
 class TicTacToe:
     """
     this is tic-tac-toe beyond. It goes beyond simple 3x3 board game and simple rules
@@ -27,27 +26,27 @@ class TicTacToe:
             bottom_line = '_' if row_num < n-1 else ' '
 
             # draw upper area of the row
-            row = '   '+padding.format('|',fill=' ')*(n-1)+'\n'
+            row = '   '+padding.format('|', fill=' ')*(n-1)+'\n'
 
             # draw middle area of the row
-            row += str(row_num+1)+'  ' # display row number on left side
+            row += str(row_num+1)+'  '  # display row number on left side
             for i in range(n-1):
                 row += middle.format(board[row_num*n + i], '|')
             row += middle.format(board[row_num*n + n - 1], '')+'\n'
 
             # draw lower area of the row
-            row += '   '+padding.format('|',fill=bottom_line)*(n-1)
-            row += padding.format(' ',fill=bottom_line)+'\n'
+            row += '   '+padding.format('|', fill=bottom_line)*(n-1)
+            row += padding.format(' ', fill=bottom_line)+'\n'
 
             # display column numbers on bottom of the board
             if row_num == n - 1:
-                row += '\n   '+' '.join(map(lambda x: '{:^5}'.format(x), range(1,n+1)))
+                row += '\n   '+' '.join(map(lambda x: '{:^5}'.format(x), range(1 ,n+1)))
 
             return row
 
         display = ''
         for i in range(self.n):
-            display+=draw_row(self.board, i, self.n)
+            display += draw_row(self.board, i, self.n)
         print display
 
     def board_full(self):
