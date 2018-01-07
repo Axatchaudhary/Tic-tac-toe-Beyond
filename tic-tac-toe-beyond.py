@@ -9,6 +9,9 @@ class TicTacToe:
         self.n = n
         self.board = [' '] * n ** 2
 
+        # set-up winning positions
+        self.define_winning_positions()
+
         # initialize players
         self.playerX, self.playerO = playerX, playerO
 
@@ -65,7 +68,7 @@ class TicTacToe:
         result.extend(win_rows)
         result.extend(win_columns)
         result.extend(win_diags)
-        return result
+        self.winning_positions = result
 
 
     def player_wins(self, char):
