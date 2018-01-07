@@ -70,12 +70,9 @@ class TicTacToe:
         result.extend(win_diags)
         self.winning_positions = result
 
-
     def player_wins(self, char):
-        for a, b, c in [(0, 1, 2), (3, 4, 5), (6, 7, 8),
-                        (0, 3, 6), (1, 4, 7), (2, 5, 8),
-                        (0, 4, 8), (2, 4, 6)]:
-            if char == self.board[a] == self.board[b] == self.board[c]:
+        for position in self.winning_positions:
+            if all([self.board[i] == char for i in position]):
                 return True
 
         return False
@@ -120,6 +117,12 @@ class TicTacToe:
 
 if __name__ == '__main__':
 
-    t = TicTacToe(3, None, None)
-
-    print t.define_winning_positions()
+    t = TicTacToe(4, None, None)
+    t.board[0] = 'x'
+    t.board[5] = 'x'
+    t.board[10] = 'x'
+    t.board[15] = 'x'
+    if t.player_wins('x'):
+        print 'win'
+    else:
+        print 'no win'
